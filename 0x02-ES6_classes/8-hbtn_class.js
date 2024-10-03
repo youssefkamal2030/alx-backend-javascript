@@ -1,43 +1,46 @@
-export default class HolbertonClass {
-  constructor(size, location) {
-    if (typeof size !== 'number') {
-      throw new TypeError('size must be a number');
+export class HolbertonClass {
+    constructor(year, location) {
+      this._year = year;
+      this._location = location;
     }
-    if (typeof location !== 'string') {
-      throw new TypeError('location must be a string');
+  
+    get year() {
+      return this._year;
     }
-
-    this._size = size;
-    this._location = location;
-  }
-
-  get size() {
-    return this._size;
-  }
-
-  get location() {
-    return this._location;
-  }
-
-  set size(newSize) {
-    if (typeof newSize !== 'number') {
-      throw new TypeError('size should be a number');
+  
+    get location() {
+      return this._location;
     }
-    this._size = newSize;
   }
-
-  set location(newLocation) {
-    if (typeof newLocation !== 'string') {
-      throw new TypeError('location should be a string');
+  
+  export class StudentHolberton {
+    constructor(firstName, lastName, holbertonClass) {
+      this._firstName = firstName;
+      this._lastName = lastName;
+      this._holbertonClass = holbertonClass; // Fixed here
     }
-    this._location = newLocation;
+  
+    get fullName() {
+      return `${this._firstName} ${this._lastName}`;
+    }
+  
+    get holbertonClass() {
+      return this._holbertonClass; // Fixed here
+    }
+  
+    get fullStudentDescription() {
+      return `${this._firstName} ${this._lastName} - ${this._holbertonClass.year} - ${this._holbertonClass.location}`; // Fixed here
+    }
   }
-
-  valueOf() {
-    return this._size;
-  }
-
-  toString() {
-    return this._location;
-  }
-}
+  
+  const class2019 = new HolbertonClass(2019, 'San Francisco');
+  const class2020 = new HolbertonClass(2020, 'San Francisco');
+  
+  const student1 = new StudentHolberton('Guillaume', 'Salva', class2020);
+  const student2 = new StudentHolberton('John', 'Doe', class2020);
+  const student3 = new StudentHolberton('Albert', 'Clinton', class2019);
+  const student4 = new StudentHolberton('Donald', 'Bush', class2019);
+  const student5 = new StudentHolberton('Jason', 'Sandler', class2019);
+  
+  export const listOfStudents = [student1, student2, student3, student4, student5];
+  
