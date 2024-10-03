@@ -24,7 +24,9 @@ module.exports = {
       'error',
       'LabeledStatement',
       'WithStatement',
+      
     ],
+    'no-underscore-dangle': 'off',
   },
   overrides:[
     {
